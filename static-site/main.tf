@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "origin_bucket_policy" {
 
 resource "aws_s3_bucket_policy" "cloudfront" {
   bucket = aws_s3_bucket.static_site.id
-  policy = state
+  policy = data.aws_iam_policy_document.origin_bucket_policy.json
 }
 
 # --- CloudFront ---
