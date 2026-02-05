@@ -34,7 +34,7 @@ resource "aws_lambda_function" "visitor_counter" {
 
   environment {
     variables = {
-      TABLE_NAME = aws_dynamodb_table.terraform_locks.name
+      TABLE_NAME = aws_dynamodb_table.counter.name
     }
   }
 }
@@ -123,7 +123,7 @@ resource "aws_apigatewayv2_integration" "lambda_integration" {
 resource "aws_apigatewayv2_route" "default_post" {
   api_id    = aws_apigatewayv2_api.http_api.id
   route_key = "POST /count"
-  target    = "integrations/${aws_apigatewayv2_integrations.lambda_integration.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 
 }
 
