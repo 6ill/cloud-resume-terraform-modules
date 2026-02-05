@@ -4,7 +4,7 @@ variable "table_name" {
 }
 
 variable "lambda_path" {
-  description = "The file path of the lambda function"
+  description = "The directory path of the lambda function"
   type        = string
 }
 
