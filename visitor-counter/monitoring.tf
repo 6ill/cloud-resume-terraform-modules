@@ -22,7 +22,7 @@ locals {
       period              = 60
       statistic           = "Sum"
       comparison_operator = "GreaterThanThreshold"
-      alarm_description   = "Triggered when lambda takes too long"
+      alarm_description   = "Triggered when lambda gets called many time"
     }
   }
 }
@@ -37,7 +37,7 @@ resource "aws_sns_topic_subscription" "lambda_alerts" {
   endpoint  = var.notification_email
 }
 
-resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
+resource "aws_cloudwatch_metric_alarm" "lambda_alerts" {
   for_each            = local.alarm_configs
   alarm_name          = "visitor-counter-${each.key}"
   alarm_description   = each.value.alarm_description
