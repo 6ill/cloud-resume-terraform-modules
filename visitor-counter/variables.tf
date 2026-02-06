@@ -18,3 +18,8 @@ variable "cors_allowed_origins" {
   type        = list(string)
   default     = ["*"]
 }
+
+variable "notification_email" {
+  description = "The email address destination for receiving notifacation about lambda metrics"
+  type        = string
+}
