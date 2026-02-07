@@ -15,6 +15,10 @@ resource "aws_dynamodb_table" "counter" {
     type = "S"
   }
 
+  ttl {
+    attribute_name = "expires_at"
+    enabled        = true
+  }
 }
 
 data "archive_file" "lambda_zip" {
