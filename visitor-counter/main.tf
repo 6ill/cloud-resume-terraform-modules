@@ -36,6 +36,14 @@ resource "aws_lambda_function" "visitor_counter" {
   handler          = "main.lambda_handler"
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 
+  lifecycle {
+    ignore_changes = [
+      filename,
+      source_code_hash,
+      last_modified
+    ]
+  }
+
   environment {
     variables = {
       TABLE_NAME = aws_dynamodb_table.counter.name
