@@ -1,8 +1,3 @@
-provider "aws" {
-  region  = "us-east-2"
-  profile = "bill2-admin"
-}
-
 locals {
   s3_origin_id = "S3-${var.bucket_name}"
 }
